@@ -15,14 +15,25 @@
 				<div class="logo">
 					<a href="#home" class="header_title">GYM<span style="color: yellow;">24</span></a>
 				</div>
-				<nav class="header-nav">
-					<ul>
-						<li><a href="#advantages">Advantages</a></li>
-						<li><a href="#membership">Membership</a></li>
-						<li><a href="#aboutus">About</a></li>
-						<li><a href="#trainers">Trainers</a></li>
-					</ul>
-				</nav>
+				<aside>
+					<nav class="nav">
+						<ul>
+							<li><a href="#advantages">Advantages</a></li>
+							<li><a href="#membership">Membership</a></li>
+							<li><a href="#aboutus">About</a></li>
+							<li><a href="#trainers">Trainers</a></li>
+						</ul>
+					</nav>
+				</aside>
+				<div class="burger">
+					<span></span>
+				</div>
+				<script>
+					document.querySelector('.burger').addEventListener('click', function() {
+						this.classList.toggle('active');
+						document.querySelector('.nav').classList.toggle('open');
+					})
+				</script>
 			</div>
 		</header>
 		<main>
