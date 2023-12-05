@@ -4,6 +4,10 @@
 	z-index: 1;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	font: 400 14px/1 'Open Sans', sans-serif;
 	overflow-x: hidden;
@@ -36,7 +40,7 @@ h3 {
 }
 
 h4 {
-	font-size: 0.8rem;
+	font-size: 1rem;
 	font-weight: 400;
 }
 
@@ -72,8 +76,8 @@ button:hover {
 /* TOOLS */
 
 .space {
-	width: 100vw;
-	height: 25vh;
+	width: 100%;
+	height: 20vh;
 }
 
 /* HEADER SECTION */
@@ -144,8 +148,12 @@ header {
 	padding-top: 35vh;
 }
 
+.utp_container h1 {
+	margin-bottom: 50px;
+}
+
 .utp {
-	width: 100vw;
+	width: 100%;
 	height: 80vh;
 }
 
@@ -157,6 +165,14 @@ header {
 	width: 100%;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.advantages_title {
+	display: flex;
+}
+
+.advantages_title h2 {
+	margin-bottom: 125px;
 }
 
 .block {
@@ -181,6 +197,215 @@ header {
 .text_block {
 	margin-left: 40px;
 }
+
+/* MEMBERSHIP */
+
+.membership {
+	width: 100%;
+	height: 150vh;
+}
+
+.membership_container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin: 0 auto;
+	margin-top: 10%;
+	width: 80%;
+	height: 100%;
+}
+
+.pass {
+	width: 28%;
+	height: 40%;
+	background-color: #222222;
+	border-radius: 5%;
+}
+
+.pass_content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	height: 75%;
+	align-items: center;
+}
+
+.pass_buy {
+	width: 33.3%;
+	height: 11.1%;
+	margin-bottom: 11.1%;
+}
+
+.pass_text {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 90%;
+	height: 100%;
+}
+
+.pass_text_block {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: 15px;
+	width: 100%;
+}
+
+.pass_text_block h4 {
+	width: 80%;
+	margin: auto auto;
+}
+
+.pass_img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 20%;
+}
+
+.pass_img img {
+	width: 70%;
+}
+
+.pass_title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 24.5%;
+	width: 100%;
+}
+
+.pass_title h3 {
+	text-align: center;
+	line-height: 1.5;
+}
+
+.split {
+	width: 100%;
+	height: .5%;
+	background-color: #000;
+}
+
+/* ABOUTUS */
+
+.aboutus {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 80vh;
+}
+
+.aboutus_container, .aboutus_slider {
+	width: 50%;
+	height: 100%;
+}
+
+.aboutus_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.aboutus_container h2 {
+	margin-bottom: 70px;
+}
+
+.aboutus_slider {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* TRAINERS */
+
+.trainers {
+	width: 100%;
+	height: 100vh;
+}
+
+.trainers h2 {
+	text-align: center;
+	margin-bottom: 100px;
+}
+
+.trainers_content {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.trainers_card {
+	width: 23.5%;
+	height: 47%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #222222;
+	border-radius: 5%;
+}
+
+.card {
+	width: 90%;
+	height: 90%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.card_img {
+	width: 95%;
+	height: 70%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+.card_img img {
+	width: 100%;
+}
+
+.links {
+	width: 66.6%;
+	height: 2.33%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	margin-bottom: 20px;
+}
+
+.links a {
+	width: 20%;
+	height: 100%;
+}
+
+.links a img {
+	width: 100%;
+}
+
+#inst:hover {
+	content: url('images/inst_hover.png');
+}
+
+#twitter:hover {
+	content: url('images/twitter_hover.png');
+}
+
+#youtube:hover {
+	content: url('images/youtube_hover.png');
+}
+
+/* MEDIA | ADAPTATIONS */
 
 @media (orientation: landscape) {
 	.home_back {
@@ -221,3 +446,4 @@ header {
 		flex-shrink: 1;
 	}
 }
+
