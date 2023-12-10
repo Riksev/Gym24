@@ -3,12 +3,45 @@ function burgerMenu() {
 	document.querySelector('.nav').classList.toggle('openBurger');
 }
 
-function contactOverlay() {
+function toggleContactOverlay() {
+	buttonAnimation();
 	document.querySelector('.overlay_contact').classList.toggle('openContact');
 	document.querySelector('body').classList.toggle('showBody');
 }
 
+function contactOverlay() {
+	var modalAnime;
+	if (document.querySelector('.overlay_contact').classList.contains('openContact')) { 
+		modalAnime = anime ({
+			targets: '.contact_container',
+			opacity: [{ value: [1, 0], duration: 750, easing: 'linear' }],
+			duration: 250,
+			easing: 'linear',
+			autoplay: false,
+			complete: function(anim) {
+				toggleContactOverlay();
+			}
+		});
+	}
+	else {
+		modalAnime = anime ({
+			targets: '.contact_container',
+			opacity: [{ value: [1, 0], duration: 750, easing: 'linear' }],
+			duration: 500,
+			easing: 'linear',
+			translateY: 300,
+			autoplay: false,
+			direction: 'reverse',
+			begin: function(anim) {
+				toggleContactOverlay();
+			}
+		});
+	}
+	modalAnime.play();
+}
+
 function checkContactForm() {
+	buttonAnimation();
 	form = document.querySelector('.contact_form');
 	let string = '';
 	var nameRE = /^[a-zA-Z]{1,}$/;
@@ -23,6 +56,7 @@ function checkContactForm() {
 	if (!form.comment.value.match(commentRE)) string += '\nComment has to contain at least 20 symbols!';
 	if (string == '') {
 		alert('Form has been sent successfully!');
+		location.href='#home';
 		return true;
 	}
 	else {
