@@ -9,6 +9,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Open+Sans:wght@400;800&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="style.css">
 		<script src="script.js"></script>
+		<script src="anime.min.js"></script>
 	</head>
 	<body>
 		<header>
@@ -75,7 +76,7 @@
 						Free trial session<br>
 						with a trainer <br>
 					</h1>
-					<button>Detailed</button>
+					<button onclick="buttonDetailed()">Detailed</button>
 				</div>
 			</div>
 			<div class="space" id="advantages"></div>
@@ -167,7 +168,7 @@
 									</h4>
 								</div>
 							</div>
-							<button class="pass_buy">Buy</button>
+							<button class="pass_buy" onclick="buttonAnimation()">Buy</button>
 						</div>
 					</div>
 					<div class="pass">
@@ -216,7 +217,7 @@
 									</h4>
 								</div>
 							</div>
-							<button class="pass_buy">Buy</button>
+							<button class="pass_buy" onclick="buttonAnimation()">Buy</button>
 						</div>
 					</div>
 					<div class="pass">
@@ -257,7 +258,7 @@
 									</h4>
 								</div>
 							</div>
-							<button class="pass_buy">Buy</button>
+							<button class="pass_buy" onclick="buttonAnimation()">Buy</button>
 						</div>
 					</div>
 					<div class="pass">
@@ -289,7 +290,7 @@
 									</h4>
 								</div>
 							</div>
-							<button class="pass_buy">Buy</button>
+							<button class="pass_buy" onclick="buttonAnimation()">Buy</button>
 						</div>
 					</div>
 					<div class="pass">
@@ -338,7 +339,7 @@
 									</h4>
 								</div>
 							</div>
-							<button class="pass_buy">Buy</button>
+							<button class="pass_buy" onclick="buttonAnimation()">Buy</button>
 						</div>
 					</div>
 					<div class="pass">
@@ -387,7 +388,7 @@
 									</h4>
 								</div>
 							</div>
-							<button class="pass_buy">Buy</button>
+							<button class="pass_buy" onclick="buttonAnimation()">Buy</button>
 						</div>
 					</div>
 				</div>
@@ -419,9 +420,6 @@
 						<br>
 					</h4>
 				</div>
-				<!-- <div class="aboutus_slider">
-					<img src="images/aboutus_1.png">
-				</div> -->
 				<div class="slider">
 					<div class="item">
 						<img src="images/aboutus_1.png">
@@ -603,6 +601,23 @@
 			</div>
 			<div class="space"></div>
 			<div class="space"></div>
+			<script>
+				var blockMove = anime ({
+					targets: 'button',
+					rotate: {
+						value: 360,
+						duration: 1800,
+						easing: 'easeInOutSine'
+					},
+					background: '#FFF',
+					translateX: 300,
+					duration: 1500,
+					delay: anime.stagger(200, {direction: 'reverse'}),
+					opacity: [1, 0],
+					easing: 'easeInOutQuart',
+					direction: 'reverse'
+				});
+			</script>
 		</main>
 		<footer>
 			<div class="footer_content">

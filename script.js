@@ -56,3 +56,12 @@ function showSlides(n) {
 	}
 	slides[slideIndex - 1].style.display = "block";    
 }
+
+function buttonAnimation() {
+	blockMove.restart();
+}
+
+function buttonDetailed() {
+	buttonAnimation();
+	location.href='#membership';
+}
