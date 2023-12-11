@@ -25,6 +25,7 @@
 							<li><a href="#aboutus">About</a></li>
 							<li><a href="#trainers">Trainers</a></li>
 							<li><a href="javascript:void(0)" onclick="contactOverlay()">Contact</a></li>
+							<li><a href="javascript:void(0)" onclick="modalCalculator()">Calculator</a></li>
 						</ul>
 					</nav>
 				</aside>
@@ -65,6 +66,174 @@
 						<input type="submit" class="input_button" value="Submit">
 					</form>
 				</div>
+			</div>
+			<div class="modal_calculator">
+				<div class="calculator_container">
+					<div class="calculator_header">
+						<div class="calculator_menu">
+							<a href="javascript:void(0)" onclick="modalCalculator()">
+								<img src="images/cross.png" id="cross">
+							</a>
+						</div>
+						<h2>Calculator</h2>
+						<h4>Daily water consumption rate</h4>
+					</div>
+					<div class="calculator_main">
+						<div class="calculator_toggles">
+							<div class="answers">
+								<div class="answer">
+									<div class="answer_title">
+										<label>Gender</label>
+									</div>
+									<div class="answer_box">
+										<label>Female</label>
+										<label class="label">
+											<div class="toggle">
+												<input class="toggle-state" type="checkbox" name="check" value="check" onclick="calculateWaterRate('gender_checkbox')" id="gender_checkbox">
+												<div class="indicator"></div>
+											</div>
+										</label>
+										<label>Male</label>
+									</div>
+								</div>
+								<div class="answer">
+									<div class="answer_title">
+										<label>Do you drink coffee?</label>
+									</div>
+									<div class="answer_box">
+										<label>No</label>
+										<label class="label">
+											<div class="toggle">
+												<input class="toggle-state" type="checkbox" name="check" value="check" onclick="calculateWaterRate('coffee_checkbox')" id="coffee_checkbox">
+												<div class="indicator"></div>
+											</div>
+										</label>
+										<label>Yes</label>
+									</div>
+								</div>
+								<div class="answer">
+									<div class="answer_title">
+										<label>Do you drink alchohol?</label>
+									</div>
+									<div class="answer_box">
+										<label>No</label>
+										<label class="label">
+											<div class="toggle">
+												<input class="toggle-state" type="checkbox" name="check" value="check" onclick="calculateWaterRate('alchohol_checkbox')" id="alchohol_checkbox">
+												<div class="indicator"></div>
+											</div>
+										</label>
+										<label>Yes</label>
+									</div>
+								</div>
+								<div class="answer">
+									<div class="answer_title">
+										<label>Sunny climate?</label>
+									</div>
+									<div class="answer_box">
+										<label>No</label>
+										<label class="label">
+											<div class="toggle">
+												<input class="toggle-state" type="checkbox" name="check" value="check" onclick="calculateWaterRate('sunny_checkbox')" id="sunny_checkbox">
+												<div class="indicator"></div>
+											</div>
+										</label>
+										<label>Yes</label>
+									</div>
+								</div>
+								<div class="answer">
+									<div class="answer_title">
+										<label>Protein diet?</label>
+									</div>
+									<div class="answer_box">
+										<label>No</label>
+										<label class="label">
+											<div class="toggle">
+												<input class="toggle-state" type="checkbox" name="check" value="check" onclick="calculateWaterRate('protein_checkbox')" id="protein_checkbox">
+												<div class="indicator"></div>
+											</div>
+										</label>
+										<label>Yes</label>
+									</div>
+								</div>
+								<div class="answer answer_female">
+									<div class="answer_title">
+										<label>Pregnancy?</label>
+									</div>
+									<div class="answer_box">
+										<label>No</label>
+										<label class="label">
+											<div class="toggle">
+												<input class="toggle-state" type="checkbox" name="check" value="check" onclick="calculateWaterRate('pregnancy_checkbox')" id="pregnancy_checkbox">
+												<div class="indicator"></div>
+											</div>
+										</label>
+										<label>Yes</label>
+									</div>
+								</div>
+								<div class="answer answer_female">
+									<div class="answer_title">
+										<label>Breast-feeding?</label>
+									</div>
+									<div class="answer_box">
+										<label>No</label>
+										<label class="label">
+											<div class="toggle">
+												<input class="toggle-state" type="checkbox" name="check" value="check" onclick="calculateWaterRate('feeding_checkbox')" id="feeding_checkbox">
+												<div class="indicator"></div>
+											</div>
+										</label>
+										<label>Yes</label>
+									</div>
+								</div>
+								<div class="answer">
+									<div class="answer_title">
+										<label>Are you sick now?</label>
+									</div>
+									<div class="answer_box">
+										<label>No</label>
+										<label class="label">
+											<div class="toggle">
+												<input class="toggle-state" type="checkbox" name="check" value="check" onclick="calculateWaterRate('sick_checkbox')" id="sick_checkbox">
+												<div class="indicator"></div>
+											</div>
+										</label>
+										<label>Yes</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="calculator_sliders">
+							<div class="slider_block">
+								<label id="weight_label"></label>
+								<div class="slidecontainer">
+									<input type="range" min="20" max="140" value="20" class="cont_slider" id="weight_slider">
+								</div>
+							</div>
+							<div class="slider_block">
+								<label id="activity_label"></label>
+								<div class="slidecontainer">
+									<input type="range" min="0" max="6" value="0" class="cont_slider" id="activity_slider">
+								</div>
+							</div>
+							<div class="slider_block">
+								<label id="water_rate_label"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<script>
+					var weight_slider = document.getElementById('weight_slider');
+					var activity_slider = document.getElementById('activity_slider');
+					var weight_label = document.getElementById('weight_label');
+					var activity_label = document.getElementById('activity_label');
+					var water_rate_label = document.getElementById('water_rate_label');
+					water_rate_label.innerHTML = 'Your recommended amount:<br>0.5 liters of water per day';
+					weight_label.innerHTML = 'Weight: ' + weight_slider.value + ' kg';
+					activity_label.innerHTML = 'Activity: ' + activity_slider.value + ' hour(s)';
+					weight_slider.oninput = function() { weight_label.innerHTML = 'Weight: ' + weight_slider.value + ' kg'; calculateWaterRate(''); }
+					activity_slider.oninput = function() { activity_label.innerHTML = 'Activity: ' + activity_slider.value + ' hour(s)'; calculateWaterRate(''); }
+				</script>
 			</div>
 			<div class="utp" id="home">
 				<div class="background">

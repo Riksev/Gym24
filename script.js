@@ -9,6 +9,12 @@ function toggleContactOverlay() {
 	document.querySelector('body').classList.toggle('showBody');
 }
 
+function toggleModalCalculator() {
+	buttonAnimation();
+	document.querySelector('.modal_calculator').classList.toggle('openCalculator');
+	document.querySelector('body').classList.toggle('showBody');
+}
+
 function contactOverlay() {
 	var modalAnime;
 	if (document.querySelector('.overlay_contact').classList.contains('openContact')) { 
@@ -65,6 +71,37 @@ function checkContactForm() {
 	}
 }
 
+function modalCalculator() {
+	var modalAnime;
+	if (document.querySelector('.modal_calculator').classList.contains('openCalculator')) { 
+		modalAnime = anime ({
+			targets: '.calculator_container',
+			opacity: [{ value: [1, 0], duration: 750, easing: 'linear' }],
+			duration: 250,
+			easing: 'linear',
+			autoplay: false,
+			complete: function(anim) {
+				toggleModalCalculator();
+			}
+		});
+	}
+	else {
+		modalAnime = anime ({
+			targets: '.calculator_container',
+			opacity: [{ value: [1, 0], duration: 750, easing: 'linear' }],
+			duration: 500,
+			easing: 'linear',
+			translateY: 300,
+			autoplay: false,
+			direction: 'reverse',
+			begin: function(anim) {
+				toggleModalCalculator();
+			}
+		});
+	}
+	modalAnime.play();
+}
+
 function nextSlide() {
 	showSlides(slideIndex += 1);
 }
@@ -98,4 +135,49 @@ function buttonAnimation() {
 function buttonDetailed() {
 	buttonAnimation();
 	location.href='#membership';
+}
+
+function calculateWaterRate(checkbox) {
+	var weight_slider = document.getElementById('weight_slider');
+	var activity_slider = document.getElementById('activity_slider');
+	var gender_checkbox = document.getElementById('gender_checkbox');
+	var coffee_checkbox = document.getElementById('coffee_checkbox');
+	var alchohol_checkbox = document.getElementById('alchohol_checkbox');
+	var sunny_checkbox = document.getElementById('sunny_checkbox');
+	var protein_checkbox = document.getElementById('protein_checkbox');
+	var pregnancy_checkbox = document.getElementById('pregnancy_checkbox');
+	var feeding_checkbox = document.getElementById('feeding_checkbox');
+	var sick_checkbox = document.getElementById('sick_checkbox');
+	if (checkbox != '') {
+		var current_checkbox = document.getElementById(checkbox);
+		if (checkbox == 'gender_checkbox') {
+			const answers_female = document.getElementsByClassName('answer_female');
+			if (current_checkbox.value == 'check') {
+				for (let i = 0; i < answers_female.length; i++) {
+					answers_female[i].style.display = 'none';
+				}
+			} else {
+				for (let i = 0; i < answers_female.length; i++) {
+					answers_female[i].style.display = 'flex';
+				}
+			}
+		}
+		if (current_checkbox.value == 'check') current_checkbox.value = 'uncheck';
+		else current_checkbox.value = 'check';
+	}
+	let water_rate = 0.5;
+	water_rate *= weight_slider.value / weight_slider.min;
+	if (gender_checkbox.value == 'uncheck') water_rate *= 1.057;
+	water_rate += (activity_slider.value - activity_slider.min) * 0.28;
+	if (coffee_checkbox.value == 'uncheck') water_rate += 0.2;
+	if (alchohol_checkbox.value == 'uncheck') water_rate += 0.3;
+	if (sunny_checkbox.value == 'uncheck') water_rate *= 1.2;
+	if (protein_checkbox.value == 'uncheck') water_rate *= 1.13;
+	if (gender_checkbox.value == 'check') {
+		if (pregnancy_checkbox.value == 'uncheck') water_rate *= 1.25;
+		if (feeding_checkbox.value == 'uncheck') water_rate *= 1.4;
+	}
+	if (sick_checkbox.value == 'uncheck') water_rate *= 1.166;
+	var water_rate_label = document.getElementById('water_rate_label');
+	water_rate_label.innerHTML = 'Your recommended amount:<br>' + water_rate.toFixed(1) +' liters of water per day';;
 }
